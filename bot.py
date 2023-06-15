@@ -27,9 +27,8 @@ def run_discord_bot():
         
         username = str(message.author)
         user_message = str(message.content)
-        channel = str(message.channel)
 
-        print(f'{username} said "{user_message}" in {channel}')
+        print(f'{username} said "{user_message}"')
 
         if user_message[0] == '?':
             user_message = user_message[1:]

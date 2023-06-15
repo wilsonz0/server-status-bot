@@ -7,6 +7,4 @@ def get_response(message: str) -> str:
         return 'Yahoi'
     
     if p_message == '!getstatus':
-        return str(check.get_number_online()) + " players(s) online"
-
-    return "I do not understand. Try again." 
+        return str(check.get_number_online()) + " player(s) online"
