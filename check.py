@@ -9,6 +9,6 @@ def get_number_online():
 
 def get_online_players():
     if status.players.online == 0:
-        return -1
+        return
     
     return status.players.sample

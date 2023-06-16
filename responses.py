@@ -13,8 +13,13 @@ def get_response(message: str) -> str:
         return str(check.get_number_online()) + " player(s) online"
     
     if p_message == '!getallnames':
+        allplayers = check.get_online_players()
+
+        if allplayers == None:
+            return "Everyone is offline"
+
         temp = ""
-        for player in check.get_online_players():
+        for player in allplayers:
             temp += str(player.name) + ", "
         return temp
 
