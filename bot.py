@@ -1,7 +1,7 @@
 import discord
 import responses
 from discord.ext import tasks
-from config import TOKEN 
+from config import *
 
 async def send_message(message, user_message, is_private):
     try:
@@ -19,15 +19,12 @@ def run_discord_bot():
     @client.event
     async def on_ready():
         print(f'{client.user} is now running')
-        # send_update.start()
 
 
     @client.event
     async def on_message(message):
         if message.author == client.user:
             return
-        
-        # send_update.stop()
         
         username = str(message.author)
         user_message = str(message.content)
@@ -46,8 +43,11 @@ def run_discord_bot():
 
     @tasks.loop(minutes=30)
     async def send_update():
-        response = responses.get_response("!getstatus")
-        print(response)
+        response1 = responses.get_response("!getstatus")
+        response2 = responses.get_response("!getallnames")
+        
+        channel = client.get_channel(CHANNEL_ID)
+        await channel.send(response1 + "\n" + response2)
 
 
     client.run(TOKEN)
